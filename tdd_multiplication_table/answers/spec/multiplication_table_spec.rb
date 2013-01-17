@@ -6,9 +6,15 @@ describe MultiplicationTable do
   end
   describe "#new" do
     describe "size" do
-      it "has a default of 9"
-      it "can be smaller"
-      it "can be bigger"
+      it "has a default of 9" do
+        subject.content.should have(9).items
+      end
+      it "can be smaller" do
+        MultiplicationTable.new(5).content.should have(5).items
+      end
+      it "can be bigger" do
+        MultiplicationTable.new(10).content.should have(10).items
+      end
     end
   end
 
