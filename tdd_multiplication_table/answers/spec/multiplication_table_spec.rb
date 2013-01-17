@@ -1,7 +1,9 @@
-require "./multiplication_table.rb"
+require "./lib/multiplication_table.rb"
 
 describe MultiplicationTable do
-  it "should be instance of multiplication table"
+  it "should be instance of multiplication table" do
+    subject.should be_a(MultiplicationTable)
+  end
   describe "#new" do
     describe "size" do
       it "has a default of 9"
@@ -11,14 +13,27 @@ describe MultiplicationTable do
   end
 
   describe "#header_row" do
-    it "should return an array ([1, 2, 3, 4, 5, 6, 7, 8, 9])"
+    it "should return an array ([1, 2, 3, 4, 5, 6, 7, 8, 9])" do
+      subject.header_row.should == [1..9]
+    end
   end
 
   describe "#content" do
-    it "should return an array of arrays (9 rows of 9 element arrays)"
-    it "should contain the first row of the table ([1, 2, 3, 4, 5, 6, 7, 8, 9])"
-    it "should contain the second row of the table ([2, 4, 6, 8, 10, 12, 14, 16, 18])"
-    it "should contain the ninth row ([9, 18, 27, 36, 45, 54, 63, 72, 81])"
+    it "should return an array of arrays (9 rows of 9 element arrays)" do
+      subject.content.should have(9).items
+      subject.content.each do |content_row|
+        content_row.should have(9).items
+      end
+    end
+    it "should contain the first row of the table ([1, 2, 3, 4, 5, 6, 7, 8, 9])" do
+      subject.content[0].should == (1..9).to_a
+    end
+    it "should contain the second row of the table ([2, 4, 6, 8, 10, 12, 14, 16, 18])" do
+      subject.content[1].should == [2, 4, 6, 8, 10, 12, 14, 16, 18]
+    end
+    it "should contain the ninth row ([9, 18, 27, 36, 45, 54, 63, 72, 81])" do
+      subject.content[8].should == [9, 18, 27, 36, 45, 54, 63, 72, 81]
+    end
   end
 
   describe "#to_s" do
