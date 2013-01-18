@@ -35,7 +35,7 @@ describe MultiplicationTable do
       end
     end
     it "should contain the first row of the table ([1, 2, 3, 4, 5, 6, 7, 8, 9])" do
-      subject.content[0].should == (1..9).to_a
+      subject.content[0].should == [1, 2, 3, 4, 5, 6, 7, 8, 9]
     end
     it "should contain the second row of the table ([2, 4, 6, 8, 10, 12, 14, 16, 18])" do
       subject.content[1].should == [2, 4, 6, 8, 10, 12, 14, 16, 18]
